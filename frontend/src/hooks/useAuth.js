@@ -35,8 +35,27 @@ export const AuthProvider = ({ children }) => {
         toast.success("Logout Successful");
     };
 
+    const updateProfile = async user => {
+        const updatedUser = await userService.updateProfile(user);
+        toast.success("Profile Updated");
+        if(updatedUser) setUser(updatedUser);
+        
+    };
+
+
+    const changePassword = async (passwords) => {
+        try {
+          await userService.changePassword(passwords);
+          logout();
+          toast.success("Password Changed, Please Login Again!");
+        } catch (error) {
+          // Handle the error here, display a toast message
+          toast.error(error.response?.data || "Failed to change password");
+        }
+      };
+
     return (
-        <AuthContext.Provider value={{ user, login, logout, register }}>
+        <AuthContext.Provider value={{ user, login, logout, register, updateProfile, changePassword }}>
             {children}
         </AuthContext.Provider>
     );

@@ -1,9 +1,10 @@
 import { Router } from 'express';
 import handler from 'express-async-handler';
 import auth from '../middleware/auth.mid.js';
-import { BAD_REQUEST } from '../constants/httpStatus.js';
+import { BAD_REQUEST, UNAUTHORIZED } from '../constants/httpStatus.js';
 import { OrderModel } from '../models/order.model.js';
 import { OrderStatus } from '../constants/orderStatus.js';
+import { UserModel } from '../models/user.model.js';
 
 const router = Router();
 router.use(auth);
@@ -41,6 +42,22 @@ router.put('/pay', handler(async (req, res) => {
   res.send(order._id);
 }))
 
+router.get('/track/:orderID', handler(async (req, res) => {
+  const { orderID } = req.params;
+  const user = await UserModel.findById( req.user.id );
+
+  const filter = { _id: orderID };
+
+  if (!user.isAdmin) {filter.user = user._id};
+
+  const order = await OrderModel.findOne(filter);
+
+  if (!order) return res.send(UNAUTHORIZED);
+
+  return res.send(order);
+
+}));
+
 router.get(
   '/newOrderForCurrentUser',
   handler(async (req, res) => {
@@ -49,6 +66,26 @@ router.get(
     else res.status(BAD_REQUEST).send();
   })
 )
+
+router.get('/allstatus', (req, res) => {
+  const allStatus = Object.values(OrderStatus);
+  res.send(allStatus);
+})
+
+
+router.get('/:status?', handler(async (req, res) => {
+  const status = req.params.status;
+  const user = await UserModel.findById(req.user.id);
+  const filter = {};
+
+  if (!user.isAdmin) filter.user = user._id;
+
+  if (status) filter.status = status;
+
+  const orders = await OrderModel.find(filter).sort('-createdAt');
+
+  res.send(orders);
+}))
 
 const getNewOrderForCurrentUser = async req => 
   await OrderModel.findOne({
