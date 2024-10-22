@@ -2,35 +2,54 @@ import axios from 'axios';
 
 export const createOrder = async order => {
   try {
-    const { data } = axios.post('/api/orders/create', order);
+    const { data } = await axios.post('/api/orders/create', order);
     return data;
-  } catch (error) {}
+  } catch (error) {
+    throw error; // Properly throw the error instead of silently catching it
+  }
 };
 
 export const getNewOrderForCurrentUser = async () => {
-  const { data } = await axios.get('/api/orders/newOrderForCurrentUser');
-  return data;
+  try {
+    const { data } = await axios.get('/api/orders/newOrderForCurrentUser');
+    return data;
+  } catch (error) {
+    throw error;
+  }
 };
 
 export const pay = async paymentId => {
   try {
     const { data } = await axios.put('/api/orders/pay', { paymentId });
     return data;
-  } catch (error) {}
+  } catch (error) {
+    throw error;
+  }
 };
 
 export const trackOrderById = async orderId => {
-  const { data } = await axios.get(`/api/orders/track/` + orderId);
-
-  return data;
+  try {
+    const { data } = await axios.get(`/api/orders/track/${orderId}`);
+    return data;
+  } catch (error) {
+    throw error;
+  }
 };
 
 export const getAll = async state => {
-  const { data } = await axios.get(`/api/orders/${state ?? ''}`);
-  return data;
-}
+  try {
+    const { data } = await axios.get(`/api/orders/${state ?? ''}`);
+    return data;
+  } catch (error) {
+    throw error;
+  }
+};
 
 export const getAllStatus = async () => {
-  const { data } = await axios.get('/api/orders/allstatus');
-  return data;
+  try {
+    const { data } = await axios.get('/api/orders/allstatus');
+    return data;
+  } catch (error) {
+    throw error;
+  }
 };

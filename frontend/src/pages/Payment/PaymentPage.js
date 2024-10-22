@@ -8,12 +8,22 @@ import PaypalButtons from '../../components/PaypalButtons/PaypalButtons';
 
 export default function PaymentPage() {
   const [order, setOrder] = useState();
+  const [error, setError] = useState();
 
   useEffect(() => {
-    getNewOrderForCurrentUser().then(data => setOrder(data));
+    const loadOrder = async () => {
+      try {
+        const data = await getNewOrderForCurrentUser();
+        if (data) setOrder(data);
+      } catch (err) {
+        setError(err.response?.data || 'Could not load order');
+      }
+    };
+    loadOrder();
   }, []);
 
-  if (!order) return;
+  if (error) return <div className={classes.error}>{error}</div>;
+  if (!order) return <div className={classes.loading}>Loading...</div>;
 
   return (
     <>
