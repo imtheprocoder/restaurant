@@ -16,27 +16,27 @@ export default function PaymentPage() {
         const data = await getNewOrderForCurrentUser();
         if (data) setOrder(data);
       } catch (err) {
-        setError(err.response?.data || 'Could not load order');
+        setError(err.response?.data || 'Kunde inte ladda beställningen');
       }
     };
     loadOrder();
   }, []);
 
   if (error) return <div className={classes.error}>{error}</div>;
-  if (!order) return <div className={classes.loading}>Loading...</div>;
+  if (!order) return <div className={classes.loading}>Laddar...</div>;
 
   return (
     <>
       <div className={classes.container}>
         <div className={classes.content}>
-          <Title title="Order Form" fontSize="1.6rem" />
+          <Title title="Beställningsformulär" fontSize="1.6rem" />
           <div className={classes.summary}>
             <div>
-              <h3>Name:</h3>
+              <h3>Namn:</h3>
               <span>{order.name}</span>
             </div>
             <div>
-              <h3>Address:</h3>
+              <h3>Adress:</h3>
               <span>{order.address}</span>
             </div>
           </div>
@@ -44,7 +44,7 @@ export default function PaymentPage() {
         </div>
 
         <div className={classes.map}>
-          <Title title="Your Location" fontSize="1.6rem" />
+          <Title title="Din Plats" fontSize="1.6rem" />
           <Map readonly={true} location={order.addressLatLng} />
         </div>
 

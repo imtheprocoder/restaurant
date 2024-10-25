@@ -24,24 +24,24 @@ export default function ProfilePage() {
   return (
   <div className={classes.container}>
     <div className={classes.details}>
-        <Title title="Update Profile" />
+        <Title title="Uppdatera Profil" />
         <form onSubmit={handleSubmit(submit)}>
             <Input
                 defaultValue={user.name}
-                label="Name"
+                label="Namn"
                 type="text"
                 {...register('name', { required: true, minLength: 5 })}
                 error={errors.name}
             />
             <Input
                 defaultValue={user.address}
-                label="Address"
+                label="Adress"
                 type="text"
                 {...register('address', { required: true, minLength: 10 })}
                 error={errors.address}
             />
 
-            <Button type="submit" text="Update" backgroundColor="#009c84" />
+            <Button type="submit" text="Uppdatera" backgroundColor="#009c84" />
         </form>
 
         <ChangePassword />

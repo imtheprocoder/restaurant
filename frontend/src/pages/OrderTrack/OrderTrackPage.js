@@ -17,27 +17,29 @@ export default function OrderTrackPage() {
     }, []);
 
 
-    if(!orderId) return <NotFound message="Order Not Found!" linkText="Go To Home Page" />
+    if(!orderId) return <NotFound message="Beställning Hittades Inte!" linkText="Gå Tillbaka Till Hem" />
 
-  return order && <div className={classes.container}>
+  return (
+    order && (
+    <div className={classes.container}>
     <div className={classes.content}>
-        <h1>Order #{order.id}</h1>
+        <h1>Beställning #{order.id}</h1>
         <div className={classes.header}>
             <div>
-                <strong>Date</strong>
+                <strong>Datum</strong>
                 <DateTime date={order.createdAt} />
             </div>
             <div>
-                <strong>Address</strong>
+                <strong>Adress</strong>
                 {order.address}
             </div>
             <div>
-                <strong>State</strong>
+                <strong>Tillstånd</strong>
                 {order.status}
             </div>
             {order.paymentId && (
                 <div>
-                    <strong>Payment ID</strong>
+                    <strong>Betalnings ID</strong>
                     {order.paymentId}
                 </div>
             )}
@@ -45,16 +47,18 @@ export default function OrderTrackPage() {
         <OrderItemsList order={order} />
     </div>
     <div>
-        <Title title="Your Location" fontSize="1.6rem" />
+        <Title title="Din Plats" fontSize="1.6rem" />
         <Map location={order.addressLatLng} readonly={true} />
     </div>
 
     {
         order.status === 'NEW' && (
         <div className={classes.payment}>
-            <Link to="/payment">Go To Payment</Link>
+            <Link to="/payment">Gå Till Betalning</Link>
         </div>
         )
     }
   </div>
+    )
+  )
 }

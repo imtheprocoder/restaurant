@@ -16,8 +16,8 @@ export default function Search() {
     };
   return (
   <div className={classes.container}>
-    <input type='text' placeholder='Search Foods' onChange={e => setTerm(e.target.value)} onKeyUp={e => e.key === 'Enter' && search()} value={term}/>
-    <button onClick={search}>Search</button>
+    <input type='text' placeholder='Sök Mat' onChange={e => setTerm(e.target.value)} onKeyUp={e => e.key === 'Enter' && search()} value={term}/>
+    <button onClick={search}>Sök</button>
   </div>
   )
 }

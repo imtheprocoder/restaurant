@@ -81,7 +81,7 @@
 }
 
 .price::before{
-    content: "Price: ";
+    content: "Pris: ";
     color: darkgrey;
 }
 

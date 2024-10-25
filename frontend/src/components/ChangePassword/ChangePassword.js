@@ -20,30 +20,30 @@ export default function ChangePassword() {
     }
 
   return <div>
-    <Title title="Change Password" />
+    <Title title="Ändra Lösenord" />
     <form onSubmit={handleSubmit(submit)}>
         <Input
             type="password"
-            label="Current Password"
+            label="Nuvarande Lösenord"
             {...register('currentPassword', { required: true})}
             error={errors.currentPassword}
         />
 
         <Input
             type="password"
-            label="New Password"
+            label="Nytt Lösenord"
             {...register('newPassword', { required: true, minLength: 5 })}
             error={errors.newPassword}
         />
 
         <Input
             type="password"
-            label="Confirm Password"
+            label="Bekräfta Lösenord"
             {...register('confirmNewPassword', { required: true, validate: value => value != getValues('newPassword') ? "Passwords do not match" : true })}
             error={errors.confirmNewPassword}
         />
 
-        <Button type="submit" text="Change" />
+        <Button type="submit" text="Ändra" />
     </form>
   </div>
 }

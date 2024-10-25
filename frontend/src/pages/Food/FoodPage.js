@@ -27,7 +27,7 @@ export default function FoodPage() {
 
   return (
   <>
-    {!food? (<NotFound message="Food Not Found!" linkText="Back To Homepage" />) : (
+    {!food? (<NotFound message="Maten Hittades Inte!" linkText="Gå Tillbaka Till Hem" />) : (
         <div className={classes.container}>
         <img className={classes.image} 
         src={`${food.imageUrl}`}
@@ -64,7 +64,7 @@ export default function FoodPage() {
 
             <div className={classes.cook_time}>
                 <span>
-                    Time to cook about <strong>{food.cookTime}</strong> minutes
+                    Tid att laga <strong>{food.cookTime}</strong> minuter
                 </span>
             </div>
 
@@ -72,7 +72,7 @@ export default function FoodPage() {
                 <Price price={food.price}/>
             </div>
 
-            <button onClick={handleAddToCart}>Add to Cart</button>
+            <button onClick={handleAddToCart}>Lägg till i varukorg</button>
         </div>
     </div>
     )}

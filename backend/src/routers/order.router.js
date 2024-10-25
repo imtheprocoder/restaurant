@@ -14,7 +14,7 @@ router.post(
   handler(async (req, res) => {
     const order = req.body;
 
-    if (order.items.length <= 0) res.status(BAD_REQUEST).send('Cart Is Empty!');
+    if (order.items.length <= 0) res.status(BAD_REQUEST).send('Varukorgen Är Tom!');
 
     await OrderModel.deleteOne({
       user: req.user.id,
@@ -31,7 +31,7 @@ router.put('/pay', handler(async (req, res) => {
   const { paymentId } = req.body;
   const order = await getNewOrderForCurrentUser(req);
   if(!order) {
-    res.status(BAD_REQUEST).send('Order Not Found!');
+    res.status(BAD_REQUEST).send('Beställningen Hittades Inte!');
     return;
   }
 

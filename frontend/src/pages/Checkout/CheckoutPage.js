@@ -34,18 +34,18 @@ export default function CheckoutPage() {
   <>
     <form onSubmit={handleSubmit(submit)} className={classes.container}>
     <div className={classes.content}>
-        <Title title="Order Form" fontSize="1.6rem" />
+        <Title title="Beställningsformulär" fontSize="1.6rem" />
         <div className={classes.inputs}>
             <Input
                 defaultValue={user.name}
-                label="Name"
+                label="Namn"
                 {...register('name')}
                 error={errors.name}
             />
 
             <Input
                 defaultValue={user.address}
-                label="Address"
+                label="Adress"
                 {...register('address')}
                 error={errors.address}
             />
@@ -54,7 +54,7 @@ export default function CheckoutPage() {
     </div>
 
     <div>
-        <Title title="Choose Your Location" fontSize="1.6rem" />
+        <Title title="Välj Din Plats" fontSize="1.6rem" />
         <Map
             location={order.addressLatLng}
             onChange={latlng => {
@@ -69,7 +69,7 @@ export default function CheckoutPage() {
         <div className={classes.buttons}>
             <Button
                 type="submit"
-                text="Go to Payment"
+                text="Gå Till Betalning"
                 width="100%"
                 height="3rem"
             />

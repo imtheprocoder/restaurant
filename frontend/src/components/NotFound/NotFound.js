@@ -12,7 +12,7 @@ export default function NotFound({message, linkRoute, linkText}) {
 }
 
 NotFound.defaultProps = {
-    message: 'Not Found',
+    message: 'Hittades Inte',
     linkRoute: '/',
-    linkText: 'Go To Home Page'
+    linkText: 'Gå Tillbaka Till Hem'
 }

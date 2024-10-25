@@ -12,9 +12,9 @@ export default function CartPage() {
 
   return (
   <>
-    <Title title="Cart Page" margin="1.5rem 0 0 2.5rem" />
+    <Title title="Varukorg" margin="1.5rem 0 0 2.5rem" />
 
-    { cart.items.length === 0? (<NotFound message="Cart Page Is Empty" />) : (
+    { cart.items.length === 0? (<NotFound message="Varukorg Är Tomt" />) : (
       <div className={classes.container}>
         <ul className={classes.list}>
           {cart.items.map(item => (
@@ -46,7 +46,7 @@ export default function CartPage() {
               <Price price={item.price} />
             </div>
             <div>
-              <button className={classes.remove_button} onClick={() => removeFromCart(item.food.id)}>Remove</button>
+              <button className={classes.remove_button} onClick={() => removeFromCart(item.food.id)}>Ta Bort Från Varukorg</button>
             </div>
           </li>
           ))}
@@ -58,7 +58,7 @@ export default function CartPage() {
               <Price price={cart.totalPrice} />
             </div>
           </div>
-          <Link to="/checkout">Proceed To Checkout</Link>
+          <Link to="/checkout">Gå Till Kassan</Link>
         </div>
       </div>
     )}

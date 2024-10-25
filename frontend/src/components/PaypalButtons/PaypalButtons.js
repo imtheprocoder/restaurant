@@ -45,16 +45,16 @@ function Buttons({order}) {
             const payment = await actions.order.capture();
             const orderId = await pay(payment.id);
             clearCart();
-            toast.success('Payment Saved Successfully', 'Success');
+            toast.success('Betalning Sparades!', 'Success');
             navigate('/track/' + orderId);
 
         } catch (error) {
-            toast.error('Payment Failed', 'Error');
+            toast.error('Fel Med Betalning', 'Error');
         }
     }
 
     const onError = () => {
-        toast.error('Payment Failed', 'Error');
+        toast.error('Betalningen Misslyckades', 'Error');
     };
 
     return (

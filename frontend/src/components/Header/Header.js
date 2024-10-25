@@ -15,7 +15,7 @@ export default function Header() {
   
     return ( <header className={classes.header}>
         <div className={classes.container}>
-            <Link to="/" className={classes.logo}>E-Commerce</Link>
+            <Link to="/" className={classes.logo}>Restaurang</Link>
             <nav>
                 <ul>
                     {
@@ -23,15 +23,15 @@ export default function Header() {
                             <li className={classes.menu_container}>
                             <Link to="/profile">{user.name}</Link>
                             <div className={classes.menu}>
-                                <Link to="/profile">Profile</Link>
-                                <Link to="/orders">Orders</Link>
-                                <a onClick={logout}>Logout</a>
+                                <Link to="/profile">Profil</Link>
+                                <Link to="/orders">Beställningar</Link>
+                                <a onClick={logout}>Logga ut</a>
                             </div>
                             </li> ) : (
-                            <Link to="/login">Login</Link>
+                            <Link to="/login">Logga In</Link>
                         )}
                         <li>
-                            <Link to="/cart">Cart {cart.totalCount > 0 && <span className={classes.cart_count}>{cart.totalCount}</span>}</Link>
+                            <Link to="/cart">Varukorg {cart.totalCount > 0 && <span className={classes.cart_count}>{cart.totalCount}</span>}</Link>
                         </li>
                 </ul>
             </nav>

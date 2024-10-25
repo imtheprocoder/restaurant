@@ -96,12 +96,12 @@
 }
 
 .checkout .foods_count::before {
-    content: 'Count: ';
+    content: 'Antal: ';
     color: grey;
 }
 
 .checkout .total_price::before {
-    content: 'Price: ';
+    content: 'Pris: ';
     color: grey;
 }
 
