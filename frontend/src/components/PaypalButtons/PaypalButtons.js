@@ -9,7 +9,8 @@ import { useNavigate } from 'react-router-dom';
 export default function PaypalButtons({order}) {
   return <PayPalScriptProvider
   options={{
-    clientId: 'AVTZe_OGEFcnfg4pQUfiz1puPNU6BKmozM9DZYRqKYvpbOlcfgefEq4PxdGs5WwDIo61KHaag2GbTlg-'
+    clientId: 'AVTZe_OGEFcnfg4pQUfiz1puPNU6BKmozM9DZYRqKYvpbOlcfgefEq4PxdGs5WwDIo61KHaag2GbTlg-',
+    currency: 'SEK'
   }}>
 
   <Buttons order={order} />
@@ -31,7 +32,7 @@ function Buttons({order}) {
             purchase_units: [
                 {
                     amount: {
-                        currency_code: 'USD',
+                        currency_code: 'SEK',
                         value: order.totalPrice,
                     },
                 },

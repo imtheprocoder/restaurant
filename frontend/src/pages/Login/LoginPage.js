@@ -32,11 +32,11 @@ export default function LoginPage() {
   return (
   <div className={classes.container}>
     <div className={classes.details}>
-        <Title title={"Login"} />
+        <Title title={"Logga In"} />
         <form onSubmit={handleSubmit(submit)} noValidate>
             <Input
                 type="email"
-                label="Email"
+                label="Email-Adress"
                 {...register("email", {
                     required: true,
                     pattern: {
@@ -48,7 +48,7 @@ export default function LoginPage() {
             />
             <Input
                 type="password"
-                label="Password"
+                label="Lösenord"
                 {...register("password", {
                     required: true,
                     
@@ -58,9 +58,9 @@ export default function LoginPage() {
             <Button type="submit" text="Login" />
             
             <div className={classes.register}>
-                New user? &nbsp;
+                Ny Användare? &nbsp;
                 <Link to={`/register${returnUrl ? '?returnUrl=' + returnUrl : ''}`}>
-                    Register here
+                    Registrera dig här
                 </Link>
             </div>
             

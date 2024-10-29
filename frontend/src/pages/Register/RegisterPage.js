@@ -42,7 +42,7 @@ export default function RegisterPage() {
         <form onSubmit={handleSubmit(submit)} noValidate>
             <Input
                 type="text"
-                label="Name"
+                label="Namn"
                 {...register('name', {
                     required: true,
                     minLength: 5,
@@ -52,12 +52,12 @@ export default function RegisterPage() {
 
             <Input
                 type="email"
-                label="Email"
+                label="Email-Adress"
                 {...register('email', {
                     required: true,
                     pattern: {
                         value: /^[\w-.]+@([\w-]+\.)+[\w-]{2,63}$/i,
-                        message: 'Invalid email address',
+                        message: 'Felaktig Email-Adress',
                     },
                 })}
                 error={errors.email}
@@ -65,7 +65,7 @@ export default function RegisterPage() {
 
             <Input
                 type="password"
-                label="Password"
+                label="Lösenord"
                 {...register('password', {
                     required: true,
                     minLength: 5,
@@ -75,7 +75,7 @@ export default function RegisterPage() {
 
             <Input
                 type="password"
-                label="Confirm Password"
+                label="Bekräfta Lösenord"
                 {...register('confirmPassword', {
                     required: true,
                     validate: value => value !== getValues('password') ? 'Passwords do not match' : true,
@@ -85,7 +85,7 @@ export default function RegisterPage() {
 
             <Input
                 type="text"
-                label="Address"
+                label="Adress"
                 {...register('address', {
                     required: true,
                     minLength: 10,
@@ -93,11 +93,11 @@ export default function RegisterPage() {
                 error={errors.address}
             />
 
-            <Button type="submit" text="Register" />
+            <Button type="submit" text="Registrera Dig" />
             <div className={classes.login}>
-                Already a user? &nbsp;
+                Redan Registrerad Användare? &nbsp;
                 <Link to={`/login${returnUrl ? '?returnUrl=' + returnUrl : ''}`}>
-                    Login here
+                    Logga In Här
                 </Link>
             </div>
         </form>

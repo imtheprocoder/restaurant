@@ -40,7 +40,7 @@ export default function OrdersPage() {
 
   return (
   <div className={classes.container}>
-    <Title title="Orders" margin="1.5rem 0 0 .2rem" fontSize="1.9rem" />
+    <Title title="Ordrar" margin="1.5rem 0 0 .2rem" fontSize="1.9rem" />
 
     {
         allStatus && (
@@ -56,7 +56,7 @@ export default function OrdersPage() {
     }
 
     {orders?.length === 0 && (
-        <NotFound linkRoute={filter ? '/orders' : '/'} linkText={filter ? 'Show All' : 'Go To Home Page'} />
+        <NotFound linkRoute={filter ? '/orders' : '/'} linkText={filter ? 'Show All' : 'Gå Till Hem'} />
     )}
 
 
