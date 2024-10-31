@@ -50,6 +50,7 @@ export default function FoodsAdminPage() {
         <Search 
         searchRoute="/admin/foods/"
         defaultRoute="/admin/foods"
+        placeholder="Sök Mat"
         margin="1rem 0"
         />
         <Link to="/admin/addFood" className={classes.add_food}>

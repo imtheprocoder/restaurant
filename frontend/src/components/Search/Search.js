@@ -3,10 +3,10 @@ import classes from './search.module.css'
 import { useNavigate, useParams } from 'react-router-dom';
 
 Search.defaultProps= {
-  searchRoute: '/search/', defaultRoute: '/',
+  searchRoute: '/search/', defaultRoute: '/', placeholder: "Sök Mat"
 }
 
-export default function Search({searchRoute, defaultRoute, margin}) {
+export default function Search({searchRoute, defaultRoute, margin, placeholder}) {
     const [term, setTerm] = useState('');
     const navigate = useNavigate();
     const {searchTerm} = useParams();
@@ -20,7 +20,7 @@ export default function Search({searchRoute, defaultRoute, margin}) {
     };
   return (
   <div className={classes.container} style={{margin}}>
-    <input type='text' placeholder='Sök Mat' onChange={e => setTerm(e.target.value)} onKeyUp={e => e.key === 'Enter' && search()} value={term}/>
+    <input type='text' placeholder={placeholder} onChange={e => setTerm(e.target.value)} onKeyUp={e => e.key === 'Enter' && search()} value={term}/>
     <button onClick={search}>Sök</button>
   </div>
   )
